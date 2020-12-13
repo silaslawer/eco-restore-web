@@ -82,6 +82,7 @@ test:
 #
 production:
   <<: *default
-  database: eco_restore_production
-  username: eco_restore
-  password: <%= ENV['ECO_RESTORE_WEB_DATABASE_PASSWORD'] %>
+  url: <%= ENV.fetch("DB_HOST") { "localhost" } %>
+  database: <%= ENV.fetch("DB_NAME") { "eco_restore_production" } %>
+  username: <%= ENV.fetch("USERNAME") { "eco_restore" } %>
+  password: <%= ENV.fetch("PASSWORD") { <%= ENV['ECO_RESTORE_WEB_DATABASE_PASSWORD'] %> } %>

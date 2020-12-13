@@ -1,0 +1,15 @@
+<%= simple_form_for (@user) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
+        <%= f.input :name %>
+        <%= f.input :email %>
+        <%= f.input :password %>
+    </div>
+
+    <div class="w3-container">
+        <%= f.button :submit, class: 'btn btn-outline-success' %>
+        <%= link_to 'Back', users_path, class: 'btn btn-outline-danger' %>
+    </div>
+<% end %>
+

@@ -1,0 +1,26 @@
+<div class="col-md-4"></div>
+<div class="container col-md-4 col-md-offset-4">
+  <div class="container w3-card-4 w3-light-grey w3-text-blue w3-margin" style="padding-bottom: 6%; padding-top:2%;">
+
+    <table class="container table table-bordered table-all table-striped">
+      <tr>
+        <td class="w3-blue"><strong># </strong></td>
+        <td style="padding-left: 6%"><%= @user.id %></td>
+      </tr>
+
+      <tr>
+        <td class="w3-blue"><strong>Name </strong></td>
+        <td style="padding-left: 6%"><%= @user.name %></td>
+      </tr>
+
+      <tr>
+        <td class="w3-blue"><strong>Email</strong></td>
+        <td style="padding-left: 6%"><%= @user.email%></td>
+      </tr>
+    </table>
+  </div>
+  <div class="w3-container">
+    <%= link_to 'Back', users_path, class: 'btn btn-outline-danger', style: 'margin-right: 4px' %>
+    <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-outline-info' %>
+  </div>
+</div>

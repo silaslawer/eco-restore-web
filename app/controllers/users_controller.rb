@@ -46,6 +46,15 @@ class UsersController < ApplicationController
     end
   end
 
+  # def destroy
+  #   user = User.find(params[:id])
+  #   user.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to users_path, notice: "User was successfully destroyed." }
+  #     format.json { render :show, status: :ok, location: users_path}
+  #   end
+  # end
+
   private
 
   def set_user
@@ -57,7 +66,8 @@ class UsersController < ApplicationController
         :name,
         :email,
         :password,
-        :password_confirmation
+        :password_confirmation,
+        :is_active
       )
     end
 end

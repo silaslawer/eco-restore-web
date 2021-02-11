@@ -1,1 +1,10 @@
 <%# add navigation links to this file %>
+<% Rails.application.config.entity_definition.map do |entity, definition| %>
+    <li class="nav-item">
+        <%= link_to definition[:name].pluralize, entities_path(entity: entity), class: 'nav-link' %>
+    </li>
+<% end %>
+
+<li class="nav-item">
+    <%= link_to "Users", users_path, class: 'nav-link' %>
+</li>

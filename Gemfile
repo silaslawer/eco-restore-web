@@ -28,6 +28,8 @@ gem 'bootstrap', '~> 4.5.3'
 
 gem 'jquery-rails'
 
+gem "mustache", "~> 1.0"
+
 gem 'simple_form', '~> 5.0', '>= 5.0.3'
 
 gem 'rails_layout', '~> 1.0', '>= 1.0.42'

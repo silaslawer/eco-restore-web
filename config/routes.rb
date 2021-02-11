@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get '/entities', to: 'entities#index'
+  get '/entities/:entity', to: 'entities#index', as: 'entities'
+
+  get '/entities/:entity/:id/', to: 'entities#show', as: 'entity'
   
   resources :users
   

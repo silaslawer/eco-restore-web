@@ -1,0 +1,24 @@
+
+<div class="container col-md-6 ">
+  <div class="row" >
+  <% @definition[@entity][:fields].map do|field, definition| %>
+  <div class="mb-3 col-6 card" style="padding: 1rem;">
+    <label for="<%= field %>" class="form-label"><%= definition[:label] %></label>
+    <div id="<%= field %>" class="form-text"><%= definition[:description] %></div>
+    <div>
+      <% case definition[:type] %>
+      <% when "file" %>
+        <% case definition.dig(:options, :widget) %>
+        <% when "image" %>
+          <img src="<%= @object.data[field.to_s] %>" alt="<%= field %>" />
+        <% else %>
+          <a href="<%= @object.data[field.to_s] %>">Download</a>
+        <% end %>
+      <% else %>
+        <strong><%= @object.data[field.to_s] %></strong>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>
+</div>

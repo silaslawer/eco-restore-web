@@ -1,14 +1,13 @@
-<div class="col-md-2"></div>
+<div class="col-md-1"></div>
 <div class="container col-md-8 col-md-offset-2 w3-responsive">
-  <h3>Entities</h3>
+  <h3><%= @definition[@entity][:name].pluralize %></h3>
   <br/>
   <table class="container w3-table table-bordered w3-table-all table-striped table-condensed">
     <thead>
     <tr class="w3-blue">
-      <th scope="col">Entity Id</th>
-      <th scope="col">Entity Type</th>
-      <th scope="col">Data</th>
-      <th scope="col">Client Metadata</th>
+      <th scope="col">#</th>
+      <th scope="col"><%= @definition[@entity][:name] %></th>
+    
       <th colspan="3" scope="col"></th>
     </tr>
     </thead>
@@ -16,16 +15,17 @@
     <tbody>
     <% @entities.each do |entity| %>
       <tr>
-        <td><%= entity.entity_id %></td>
-        <td><%= entity.entity_type %></td>
-        <td><%= entity.data %></td>
-        <td><%= entity.client_metadata %></td>
-        <!--        <td><%#= contact.user.username if contact.user %></td>-->
-        <!-- <td><%#= link_to 'Show', contact, class: 'w3-btn w3-blue w3-border w3-border-blue w3-round w3-small w3-hover-blue w3-hover-text-white' %></td>
-        <td><%#= link_to 'Edit', edit_contact_path(contact), class: 'w3-btn w3-brown w3-text-white w3-border w3-border-brown w3-round w3-small w3-hover-brown w3-hover-text-white' %></td>
+        <td><%= entity.id %></td>
         <td>
-          
-        </td> -->
+          <%= Mustache.render(@definition[@entity][:detail][:title], @entity => entity.data ) %>
+          <% if @definition[@entity][:detail][:subtitle].present? %>
+            <br>
+            <%= Mustache.render(@definition[@entity][:detail][:subtitle], @entity => entity.data ) %>
+          <% end %>
+        </td>
+        
+        <td>&nbsp;</td>
+        <td><%= link_to 'Show', entity_path(id: entity.id, entity: @entity), class: 'btn btn-outline-info' %></td>
       </tr>
     <% end %>
     </tbody>
